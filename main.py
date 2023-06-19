@@ -1,83 +1,47 @@
 import telebot
-
 import time
-
 import threading
-
 token='6285500246:AAEr_f0PWWUGny_Cn70oez0TAEmrMeJE6Zw'
-
 bot=telebot.TeleBot(token)
-
 global textid
-
 global t
-
 global man_id
-
 global username
-
 global admin_id
-
 global balance
-
 global wait_time
-
 global work
-
 wait_time = 15
-
 t = 0
-
 username = 0
-
 admin_id = 5699395851
-
 man_id = 0
-
 textid=0
-
 balance = 0
-
 work = 0 #0 - не работает | 1 - работает
-
 def konec_work(message):
-
 	bot.send_message(message.chat.id, f'Отлично! Ты закончил работу! Твой баланс:  {balance}')	work=0
-
 @bot.message_handler(commands=['start'])
 
 def start_message(message):
-
     bot.send_message(message.chat.id,'Привет ✌\nЭто офицальный бот Зарничного Наркопритона "У Белочки"\nДля вывода списка товаров, напишите - \n/купить')
-
 @bot.message_handler(commands=['купить'])
 
 def tovar(message):
-
     bot.send_message(message.chat.id, 'Выберите товар(напишите /берёза или /кишмиш)')
-
 @bot.message_handler(commands=["береза",'берёза'])
 
 def bereza(message):
-
     username = message.from_user.username
-
     bot.send_message(message.chat.id, 'Заказ принят!')
-
     man_id = message.from_user.id
-
     bot.send_message(admin_id,'Получен заказ! Товар: '+ 'Берёза\nTG покупателя для связи: '+username+'\nTG ID покупателя: '+str(man_id))
-
 @bot.message_handler(commands=["кишмиш"])
 
 def bereza(message):
-
     username = message.from_user.username
-
     bot.send_message(message.chat.id, 'Заказ принят!')
-
     man_id =message.from_user.id
-
     bot.send_message(admin_id,'Получен заказ! Товар: '+ 'КишМиш\nTG покупателя для связи: '+username+'\nTG ID покупателя: '+str(man_id))
 
 @bot.message_handler(commands=["чат"])
